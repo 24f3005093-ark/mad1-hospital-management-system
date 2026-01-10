@@ -1,0 +1,105 @@
+#main{
+    margin: 0;
+}
+#sub{
+    margin: 10px;
+}
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cecbcb;
+    height: 50px;
+}
+.search{
+    margin: 30px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-box{
+    border-radius: 5px;
+}
+.search-result{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 15px;
+}
+#choose{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 60%;
+    margin: 40px auto;
+    border: 1px solid rgb(207, 204, 204);
+    border-radius: 10px;
+    height: 100px;
+}
+.bt1{
+    display: flex;
+    align-items: self-end;
+}
+.doc{
+    margin-left: 40px;
+}
+.pat{
+    margin-right: 40px;
+}
+.add_doc{
+    display: flex;
+    margin: 30px 0px;
+}
+.head{
+    margin-right: 8px;
+}
+.heading1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cecbcb;
+    height: 50px;
+}
+#form{              /* full page height */
+    display: flex;
+    justify-content: center;     /* horizontal center */
+    align-items: center; 
+    width: 350px;  
+    border: 1px solid rgb(207, 204, 204);
+    border-radius: 10px;
+}
+#main1{
+    height: 100vh;               /* full page height */
+    display: flex;
+    justify-content: center;     /* horizontal center */
+    align-items: center; 
+    background-color: #cecbcb; 
+}
+#content1{
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 10px;
+    width: 400px;                /* optional, keeps it neat */
+
+}
+#pat_info{
+    margin-top: 30px;
+}
+#main2{
+    height: 100vh;               /* full page height */
+    display: flex;
+    justify-content: center;     /* horizontal center */
+    align-items: center; 
+    background-color: #cecbcb; 
+}
+#content2{
+    margin: 0px 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 10px;
+    width: 100%;  
+}

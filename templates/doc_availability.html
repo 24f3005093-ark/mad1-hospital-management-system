@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availibility</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='doctor.css') }}">
+</head>
+<body>
+    <div id="main">
+        <div id="content">
+            <h2>Provide Availability for {{ doctor.doc_name }}</h2>
+            <div class="info">
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Morning</th>
+                            <th>Evening</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for a in availability_list %}
+                        <tr>
+                            <td>{{ a.avail_date }}</td>
+
+                            <!-- MORNING SLOT -->
+                            <td>
+                                {% if not a.morning_avail %}
+                                    <a href="{{ url_for('check_mrng_avail', avail_id=a.avail_id) }}">
+                                        <button class="btn btn-outline-secondary">08:00am – 12:00pm</button>
+                                    </a>
+                                {% else %}
+                                    Available
+                                {% endif %}
+                            </td>
+
+                            <!-- EVENING SLOT -->
+                            <td>
+                                {% if not a.evening_avail %}
+                                    <a href="{{ url_for('check_eve_avail', avail_id=a.avail_id) }}">
+                                        <button class="btn btn-outline-secondary">05:00pm – 09:00pm</button>
+                                    </a>
+                                {% else %}
+                                    Available
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" onclick="history.back()" class="btn btn-outline-secondary">Go back</button>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

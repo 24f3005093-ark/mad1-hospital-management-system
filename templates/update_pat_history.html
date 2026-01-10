@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=tabel, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <div id="sub">
+            <h2>Update Patient History</h2>
+            <div id="content">
+                <h4>Patient Name: </h4>
+                <h4>Department</h4>
+            </div>
+            <div id="content2">
+                <form action="">
+                    <label for="visit_t">Visit Type: </label>
+                    <input type="text" name="v_type" id="visit_t"> 
+                    <br>
+                    <label for="test_d">Test Done: </label>
+                    <input type="text" name="d_test" id="test_d"> 
+                    <br>
+                    <label for="diag">Diagnosis: </label>
+                    <input type="text" name="diagnosis" id="diag"> 
+                    <br>
+                    <label for="precp">Prescription: </label>
+                    <input type="text" name="precp" id="precp"> 
+                    <br>
+                    <div id="medi">
+                        <label for="medicines">Medicines</label>
+                        <input type="text" name="medicine_name[]">
+                        <!-- <label for="freq">Frequency</label>
+                        <input type="text" name="frequency[]" id="freq"> -->
+                    </div> 
+                    <br>
+                    <button type="button">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

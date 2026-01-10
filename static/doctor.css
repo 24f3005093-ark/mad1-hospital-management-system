@@ -1,0 +1,31 @@
+#main{
+    margin: 0;
+}
+#sub{
+    margin: 10px;
+}
+.head{
+    margin: 30px 0px;
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cecbcb;
+}
+#Upcmgapp{
+    margin: 30px 0px;
+}
+.avail{
+    display: flex;
+}
+.para{
+    margin-right: 10px;
+}
+#content{
+    margin: 10px 10px 30px 10px;
+}
+
+.info{
+    margin-top: 50px;
+}

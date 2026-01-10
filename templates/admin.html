@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/admin.css">
+</head>
+</head>
+<body>
+    <div id="main">
+        <div id="sub">
+            <h2 class="heading">Admin Dashboard</h2>
+            <div id="head">
+                {% for admin in admins %}
+                    <h3>Welcome {{admin.admin_name}}</h3>
+                {% endfor %}
+                <div class="container mt-4">
+                    <form action="/admin" method="post">
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-center">
+                                <input 
+                                    type="text" 
+                                    class="form-control search-large" 
+                                    placeholder="Search doctor, patient, department" 
+                                    name="search_value"
+                                    style="max-width: 600px;"
+                                >
+                            </div>
+                        </div>
+
+                    
+                        <div class="row justify-content-center gap-2">
+
+                            <div class="col-auto">
+                                <select name="value" class="form-select">
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Patient">Patient</option>
+                                    <option value="Department">Department</option>
+                                </select>
+                            </div>
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
+                                    Search
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+                
+                <div class="search-result">
+                    {% if results is not none %}
+                        {% if results %}
+                            {% for r in results %}
+                                {% if search_role == 'Doctor' %}
+                                    <table class="table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Doctor name</th>
+                                                <th>View Profile</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{r.doc_name}}</td>
+                                                <td><a href=""><button class="btn btn-outline-secondary">View profile</button></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                {% elif search_role == 'Patient' %}
+                                    <table class="table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Patient name</th>
+                                                <th><a href=""><button class="btn btn-outline-secondary">View profile</button></a></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{r.pat_name}}</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                {% elif search_role == 'Department' %}
+                                    <table class="table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Department name</th>
+                                                <th>Doctor name</th>
+                                                <!-- <th>View profile</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{r.doc_special}}</td>
+                                                <td>{{r.doc_name}}</td>
+                                                <!-- <td><a href="{{url_for('admin', )}}"><button>View profile</button></a></td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p>No {{ search_role }} found.</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div id="choose">
+                <div class="doc">
+                    <p>Check for registered Doctors</p>
+                    <a href="{{url_for('admin_doc')}}"><button class="btn btn-outline-primary">Doctor</button></a>
+                </div>
+                <div class="pat">
+                    <p>Check for registered Patient</p>
+                    <a href="{{url_for('admin_pat')}}"><button class="btn btn-outline-primary">Patient</button></a>
+                </div>
+            </div>
+
+            <div id="appoint">
+                <h2>Upcoming Appointments</h2>
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>Department Name</th>
+                            <th>Patient History</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in appoint %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{a.patient.pat_name}}</td>
+                            <td>{{a.doctor.doc_name}}</td>
+                            <td>{{a.doctor.doc_special}}</td>
+                            <td><a href="{{ url_for('patient_history', pat_id=a.pat_app_id) }}"><button class="btn btn-outline-secondary">View history</button></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

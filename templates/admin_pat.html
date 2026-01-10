@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/admin.css">
+</head>
+<body>
+    <div id="main">
+        <div id="sub">
+            <h3 class="heading">Registered Patient</h3>
+            <div id="pat_info">
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            <th>Blacklist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for patient in patients %}
+                        <tr>
+                            <td>{{patient.pat_name}}</td>
+                            <td><a href="{{url_for('update_pat', pat_id=patient.pat_id)}}"><button type="submit" class="btn btn-outline-secondary">Edit</button></a></td>
+                            <td><a href="{{ url_for('delete_pat', pat_id=patient.pat_id) }}"><button type="submit" class="btn btn-outline-secondary">Delete</button></a></td>
+                            <td>
+                                {% if patient.pat_blacklist %}
+                                    <a href="{{url_for('blacklist_pat', pat_id=patient.pat_id)}}"><button type="button" class="btn btn-outline-secondary">Blacklisted</button></a>
+                                {% else %}
+                                    <a href="{{url_for('blacklist_pat', pat_id=patient.pat_id)}}"><button type="button" class="btn btn-outline-secondary">Blacklist</button></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>     
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

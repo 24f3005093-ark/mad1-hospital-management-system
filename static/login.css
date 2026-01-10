@@ -1,0 +1,16 @@
+#main {
+    height: 100vh;               /* full page height */
+    display: flex;
+    justify-content: center;     /* horizontal center */
+    align-items: center; 
+    background-color: #cecbcb;        /* vertical center */
+}
+
+#sub {
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 10px;
+    width: 350px;                /* optional, keeps it neat */
+
+}

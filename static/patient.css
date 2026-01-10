@@ -1,0 +1,42 @@
+#main{
+    margin: 0;
+}
+#sub{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    margin-top: 25px;
+    background-color: #cecbcb;
+}
+
+.butns{
+    margin-right: 10px;
+    border-radius: 5px;
+}
+#dept{
+    margin: 35px 20px 25px 20px;
+    border-radius: 20px;
+}
+.pat_btn{
+    border-radius: 10px;
+}
+#upcmg_app{
+    margin: 35px 20px 25px 20px;
+    border-radius: 20px;
+}
+#main2{
+    margin: 0;
+}
+#sub2{
+    margin: 30px 0px;
+}
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cecbcb;
+    height: 50px;
+}
+#content2{
+    margin: 10px 25px;
+}

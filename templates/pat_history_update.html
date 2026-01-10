@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-Patient-Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/login.css">
+</head>
+<body>
+    <div id="main">
+        <div id="sub">
+            <h3>Update Patient History</h3>
+
+            <form action="{{url_for('patient_history_update', pat_id=patient.pat_id)}}" method="post">
+                <label for="visit_no">Visit No.: </label>
+                <input type="number" name="visit_no" id="visit_no">
+                <br>
+                <label for="visit_type">Visit Type: </label>
+                <input type="text" name="visit_type" id="visit_type">
+                <br>
+                <label for="test">Test done: </label>
+                <input type="text" name="test" id="test">
+                <br>
+                <label for="diagnosis">Diagnosis: </label>
+                <input type="text" name="diagnosis" id="diagnosis">
+                <br>
+                <label for="prescription">Prescription: </label>
+                <input type="text" name="prescription" id="prescription">
+                <br>
+                <label for="medicines">Medicines: </label>
+                <input type="text" name="medicines" id="medicines">
+                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

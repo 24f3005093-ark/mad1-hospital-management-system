@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/doctor.css">
+</head>
+<body>
+    <div id="main">
+        <div id="sub">
+            <h2 class="heading">Doctor Dashboard</h2>
+            <div id="content">
+                <h4 class="head">Welcome {{doctor.doc_name}}</h4>
+                <div id="Upcmgapp">
+                    <h4>Upcoming Appointments</h4>
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Patient Name</th>
+                                <th>Patient History</th>
+                                <th>Update history</th>
+                                <th>Actions</th>
+                                <th>Cancel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in appoint %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ a.patient.pat_name }}</td>
+                                <td>
+                                    <a href="{{url_for('patient_history', pat_id = a.patient.pat_id)}}"><button class="btn btn-outline-secondary">Patient history</button></a>
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('patient_history_update', pat_id=a.patient.pat_id) }}">
+                                        <button class="btn btn-outline-secondary">Update history</button>
+                                    </a>
+                                </td>
+
+                                {% if a.app_status == False %}
+                                    <td>
+                                        <a href="{{ url_for('doc_actions', app_id=a.app_id) }}">
+                                            <button class="btn btn-outline-secondary">Completed</button>
+                                        </a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <a href="{{ url_for('doc_actions', app_id=a.app_id) }}">
+                                            <button class="btn btn-outline-secondary">Pending</button>
+                                        </a>
+                                    </td>
+                                {% endif %}
+                                <td><a href="{{url_for('cancel_app_doc',  app_id=a.app_id)}}"><button type="submit" class="btn btn-outline-secondary">Cancel</button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+                
+                <div class="avail">
+                    <h4 class="para">Provide your one week availability: </h4>
+                    <a href="{{url_for('provide_availability', doc_id = doctor.doc_id)}}"><button class="btn btn-outline-primary">Provide Availability</button></a>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
